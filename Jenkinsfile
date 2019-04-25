@@ -8,7 +8,6 @@ node {
     }
     stage('Build Image'){
 
-      docker.withRegistry('54.77.173.51:5000')
 
       myNodeImage = docker.build("my-image:0.0.0", "./dockerfiles/test")
     }
