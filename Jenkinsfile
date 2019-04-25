@@ -4,7 +4,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building..'
+        checkout scm
+
+        docker.withRegistry('54.77.173.51:5000')
+
+        def myNodeImage = docker.build("my-image:0.0.0", "./dockerfiles/test")
+
+        myNodeImage.push()
       }
     }
     stage('Test') {
