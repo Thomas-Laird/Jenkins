@@ -1,27 +1,27 @@
-pipeline {
-  agent any
 
-  stages {
-    stage('Build') {
-      steps {
+node {
+  def myNodeImage
+
+    stage('Clone Repository') {
+    
         checkout scm
+    }
+    stage('Build Image'){
 
-        docker.withRegistry('54.77.173.51:5000')
+      docker.withRegistry('54.77.173.51:5000')
 
-        def myNodeImage = docker.build("my-image:0.0.0", "./dockerfiles/test")
+      def myNodeImage = docker.build("my-image:0.0.0", "./dockerfiles/test")
+    }
+    stage('Test Image'){
 
-        myNodeImage.push()
+      myNodeImage.inside {
+        echo "Image operational"
       }
     }
-    stage('Test') {
-      steps {
-        echo 'Testing..'
+    stage('Push Image'){
+        docker.withRegistry('54.77.173.51:5000'){
+
+          myNodeImage.push()
       }
     }
-    stage('Deploy') {
-      steps {
-        echo 'Deploying'
-      }
-    }
-  }
-}
+   }
