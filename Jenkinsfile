@@ -9,7 +9,7 @@ node {
     stage('Build Image'){
 
 
-      myNodeImage = docker.build("my-image:0.0.0", "./dockerfiles/test")
+      myNodeImage = docker.build("my-image:0.0.0")
     }
     stage('Test Image'){
 
