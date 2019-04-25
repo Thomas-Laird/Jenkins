@@ -19,7 +19,7 @@ node {
       }
     }
     stage('Push Image'){
-        docker.withRegistry('54.77.173.51:5000'){
+        docker.withRegistry('localhost:5000'){
 
           myNodeImage.push()
       }
