@@ -18,9 +18,11 @@ node {
       }
     }
     stage('Push Image'){
-        docker.withRegistry('https://localhost:5000'){
+        docker.withRegistry('https://ip-172-31-32-240.eu-west-1.compute.local'){
 
           myNodeImage.push()
       }
     }
+        
+    
    }
