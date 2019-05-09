@@ -18,7 +18,7 @@ node {
       }
     }
     stage('Push Image'){
-        docker.withRegistry('https://ip-172-31-32-240.eu-west-1.compute.local'){
+        docker.withRegistry('https://ip-172-31-32-240.eu-west-1.compute.internal'){
 
           myNodeImage.push()
       }
