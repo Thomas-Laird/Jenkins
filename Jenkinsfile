@@ -25,6 +25,6 @@ node {
    }
 
    stage('Build Image'){
-      sh "sudo docker run -d -p 80:8090 https://ip-172-31-32-240.eu-west-1.compute.internal/my-image:0.0.0.0"   
+      sh "docker run -d -p 80:8090 https://ip-172-31-32-240.eu-west-1.compute.internal/my-image:0.0.0"   
    }
 }
